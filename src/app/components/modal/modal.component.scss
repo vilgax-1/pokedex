@@ -1,0 +1,180 @@
+.modal{
+    &-container{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 110vh;
+        min-height: 100vh;
+        z-index: 1;
+        background: linear-gradient(to right bottom, rgba(126, 213, 111, .65) 20%, rgba(40, 180, 133, .65) 80%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: scroll;
+        
+        @media only screen and (max-width: 600px){
+            padding: 10rem 0;
+        }
+    }
+
+    &-card{
+        position: relative;
+        background: #fff;
+        border-radius: 10px;
+        padding: 4.5rem;
+        width: 45rem;
+        height: auto;
+
+        @media only screen and (max-width: 600px){
+            width: 90vw;
+            height: auto;
+            padding: 2.5rem;
+        }
+        
+        @media only screen and (max-width: 325px){
+            margin-top: 20rem;
+        }
+    }
+
+    &-close{
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translate(35%, -35%);
+        width: 3rem;
+        height: 3rem;
+        font-weight: bold;
+        color: var(--text-gray);
+        border: 1px solid var(--ligth-gray);
+        border-radius: 2px;
+        cursor: pointer;
+    }
+
+    &-character{
+        width: 10rem;
+        height: 10rem;
+        object-fit: contain;
+    }
+
+    &-description{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-column-gap: 2rem;
+        grid-row-gap: 1.5rem;
+        background: linear-gradient(rgba(255,255,255,.75), rgba(255,255,255,.75)), url('/assets/icons/pokeball.png');
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        
+        @media only screen and (max-width: 600px){
+            grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+            align-items: center;
+            justify-items: center;
+        }
+    }
+
+    &-tags{
+        display: grid;
+        grid-template-columns: min-content min-content min-content;
+        grid-column-gap: .5rem;
+        grid-row-gap: .5rem;
+    }
+
+    &-text{
+        grid-column: 1/-1;
+        font-size: 1.2rem;
+        color: var(--text-gray);
+        letter-spacing: 0.35px;
+    }
+
+    &-line{
+        width: 100%; 
+        text-align: center; 
+        border-bottom: 1px solid rgba($color: #000000, $alpha: .15); 
+        line-height: 0.1em;
+        margin: 3rem 0 ; 
+        color: var(--text-gray); 
+        font-size: 1.3rem;
+        span{
+            background: #fff;
+            padding: 0 10px;
+        }
+    }
+
+    &-statistics{
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-row-gap: 2rem;
+        height: 22.45rem;
+    }
+
+    &-graph{
+        position: relative;
+        margin: 0 auto;
+        width: 22.45rem;
+        height: 22.45rem;
+    }
+
+    &-range{
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        align-items: center;
+        grid-column-gap: 1.5rem;
+        label{
+            font-size: 1.75rem;
+            color: rgba($color: #5C6369, $alpha: .75);
+
+            @media only screen and (max-width: 600px){
+                font-size: 1.2rem;
+            }
+        }
+    }
+}
+
+
+.heading-primary{
+    margin: .5rem 0;
+}
+
+.range {
+    width: 100%;
+    background: rgba($color: #5C6369, $alpha: .2);
+    height: 1.3rem;
+    border-radius: 4px;
+    position: relative;
+    
+    .blue-bar{
+        height: 1.3rem;
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-radius: 4px;
+        background: linear-gradient(to right, rgba(54, 162, 235, 1), 60%, rgba(5, 28, 112, .75));
+        width: 55%;
+    }
+
+    .slider {
+        position: absolute;
+        z-index: 1;
+        border-radius: 3px;
+        width: 4rem;
+        height: 2.25rem;
+        background: #fff;
+        border: 1px solid var(--ligth-gray);
+        font-weight: bold;
+        font-size: 1.35rem;
+        top: calc(50% - 1.125rem);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.chart-view{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+}

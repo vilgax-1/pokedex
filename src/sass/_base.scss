@@ -1,0 +1,44 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html { 
+    font-size: 62.5%;
+
+    @include respond(tab-land) { 
+        font-size: 56.25%;
+    }
+
+    @include respond(tab-port) {
+        font-size: 50%; 
+    }
+    
+    @include respond(big-desktop) {
+        font-size: 75%;
+    }
+    @include respond(phone) {
+        font-size: 72.5%;    
+    }
+}
+
+body {
+    box-sizing: border-box;
+    background-image: url('/assets/images/pokepattern.jpg');
+    background-position: center center;
+    background-size: auto;
+    font-family: sans-serif;
+}
+
+.container{
+    display: grid;
+    grid-template-columns: minmax(15rem, 1fr) [center-start] repeat(auto-fit, minmax(5rem, 1fr)) [center-end]  minmax(15rem, 1fr);
+
+    @media only screen and (max-width: 600px){
+        grid-template-columns: minmax(3rem, 1fr) [center-start] repeat(auto-fit, minmax(5rem, 1fr)) [center-end]  minmax(3rem, 1fr);
+    }
+}
+

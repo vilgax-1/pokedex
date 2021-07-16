@@ -1,0 +1,17 @@
+.heading-primary{
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+
+.paragraph{
+    font-size: var(--font-normal);
+    color: var(--dark-gray);
+}
+
+.text-number{
+    color: rgba($color: #000000, $alpha: .35);
+    font-size: 1.3rem;
+    font-weight: 400;
+}

@@ -1,0 +1,8 @@
+<div class="character-card" *ngIf="$any(details$ | async); let details" (click)="openInformation(details)">
+    <img class="character-image" [src]="getImageSvg(details)" alt="image" >
+    <h5 class="heading-primary">{{ dataPokemon.name }}</h5>
+    <h6 class="text-number">#{{ details.id }}</h6> 
+</div>
+<div *ngIf="!$any(details$ | async)" class="character-card cover">
+    <svg><use xlink:href="/assets/icons/pokeball-cover.svg#Layer_1"></use></svg>
+</div>

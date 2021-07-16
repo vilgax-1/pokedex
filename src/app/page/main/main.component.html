@@ -1,0 +1,14 @@
+<app-modal [pokemonData]="pokemonSelected$" [ngClass]="{'close': !openModal}" (close)="openModal = $event"></app-modal>
+
+<form class="home" *ngIf="(pokemon$ | async); let pokemon" [formGroup]="formSearchPokemon" (ngSubmit)="searchByName()">
+    <img class="logo" src="/assets/images/logo-pokemon.png" alt="logo-pokemon">
+    <div class="search-container">
+        <input class="form" placeholder="Search by keywords..." formControlName="name">
+        <div class="pokeball" #pokeball id="pokeball" (click)="clearInput()"></div>
+    </div>
+    <div class="section-pokemon" *ngIf="pokemon.results.length > 0">
+        <app-cards *ngFor="let pk of pokemon.results; let i = index" [id]="i" [dataPokemon]="pk" (sendPkInformation)="sendInformation($event)"></app-cards>
+    </div>
+    <p class="error" *ngIf="pokemon.results.length === 0">POKEMON NOT FOUND</p>
+    <app-pagination class="paginator" [currentPage]="currentPage" (updateData)="getPokemon($event)" [count]="pokemon?.count"></app-pagination>
+</form>

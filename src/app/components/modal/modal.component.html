@@ -1,0 +1,57 @@
+<div class="modal-container">
+    <div class="modal-card">
+        <button class="modal-close" (click)="closeModal()">X</button>
+        <div class="modal-description">
+            <img class="modal-character" [src]="getImage(pokemon)">
+            <div class="modal-type">
+                <p class="text-number">#{{ pokemon?.id }}</p>
+                <h4 class="heading-primary">{{ pokemon?.name }}</h4>
+                <span class="modal-tags">
+                    <p class="tag" *ngFor="let slot of pokemon?.types" 
+                        [ngClass]="{
+                            'normal': slot.type.name === 'normal',
+                            'fight': slot.type.name === 'fighting',
+                            'flying': slot.type.name === 'flying',
+                            'poison': slot.type.name === 'poison',
+                            'ground': slot.type.name === 'ground',
+                            'rock': slot.type.name === 'rock',
+                            'bug': slot.type.name === 'bug',
+                            'ghost': slot.type.name === 'ghost',
+                            'steel': slot.type.name === 'steel',
+                            'fire': slot.type.name === 'fire',
+                            'water': slot.type.name === 'water',
+                            'grass': slot.type.name === 'grass',
+                            'electric': slot.type.name === 'electric',
+                            'psychic': slot.type.name === 'psychic',
+                            'ice': slot.type.name === 'ice',
+                            'dragon': slot.type.name === 'dragon',
+                            'dark': slot.type.name === 'dark',
+                            'fairy': slot.type.name === 'fairy'
+                        }">{{ slot.type.name }}</p>
+                </span>
+            </div>
+            <div class="modal-sizes">
+                <p class="paragraph"><b>Heigth: </b><span>{{ (pokemon?.height / 10) }} m</span></p>
+                <p class="paragraph m-t"><b>Weight: </b><span>{{ pokemon?.weight / 10 }} kg</span></p>
+            </div>
+            <p class="modal-text" *ngIf="(description$ | async); let desc">{{ getDescription(desc) }}</p>
+        </div>
+        <h6 class="modal-line"><span>STATISTICS</span></h6>
+        <div class="modal-statistics" *ngIf="!showGraph">
+            <div class="modal-range" *ngFor="let item of statistics">
+                <label>{{ item.label }}</label>
+                <div class="range">
+                    <div class="blue-bar" [ngStyle]="{'width': 100 > getStatistics(pokemon, item.value) ? getStatistics(pokemon, item.value) + '%' : 100 + '%' }"></div>
+                    <div class="slider" [ngStyle]="{'left': 100 > getStatistics(pokemon, item.value) ? getStatistics(pokemon, item.value) - 5 + '%'  : 95 + '%' }">{{ getStatistics(pokemon, item.value) }}</div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-graph" *ngIf="showGraph">
+            <app-graph [setPokemon]="pokemon.stats"></app-graph>
+        </div>
+        <div class="chart-view">
+            <label class="paragraph">Chart View</label>
+            <input type="checkbox" title="Cambio de vista de menú a tablet" (change)="showGraph = !showGraph">
+        </div>
+    </div>
+</div>

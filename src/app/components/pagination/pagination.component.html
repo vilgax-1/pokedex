@@ -1,0 +1,12 @@
+<ul class="pagination">  
+    <li><a  [ngClass]="{'disabled': current_Page === 1 }"  (click)='changeSelectedPage(current_Page - 1)'><svg><use xlink:href="assets/icons/arrow-right.svg#arrow"></use></svg></a></li>
+    <li *ngIf="current_Page > 3"><a (click)='changeSelectedPage(1)'>1</a></li>
+    <li *ngIf="current_Page > 3"><a>...</a></li>
+    <li *ngIf="current_Page > 1"><a (click)='changeSelectedPage(current_Page - 1)'>{{ current_Page - 1 }}</a></li>
+    <li><a class="active">{{ current_Page }}</a></li>
+    <li *ngIf="(getModValue($any(count$ | async))) - 1 >= current_Page"><a (click)='changeSelectedPage(current_Page + 1)'>{{ current_Page + 1 }}</a></li>
+    <li *ngIf="(getModValue($any(count$ | async))) - 2 > current_Page"><a>...</a></li>
+    <li *ngIf="(getModValue($any(count$ | async))) - 3 >= current_Page"><a *ngIf="(count$ | async); let cant" (click)='changeSelectedPage(getModValue(cant))'>{{ getModValue(cant) }}</a></li> 
+    <li><a [ngClass]="{'disabled': current_Page === getModValue($any(count$ | async)) }" (click)='changeSelectedPage(current_Page + 1)'><svg><use xlink:href="assets/icons/arrow-right.svg#arrow"></use></svg></a></li>
+  </ul>
+  <!-- <li *ngIf="(getModValue($any(count$ | async))) - 2 > current_Page"><a *ngIf="(count$ | async) as cant" (click)='changeSelectedPage(getModValue(cant) - 1)'>{{ getModValue(cant) - 1 }}</a></li> -->

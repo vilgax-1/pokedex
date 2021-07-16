@@ -1,0 +1,37 @@
+.pagination {
+    list-style: none;
+    display: flex;
+    width: auto;
+
+    li{
+        a{
+            padding: 1rem;
+            background-color: #fff;
+            font-size: 12px;
+            border: 1px solid #5C636926;
+            cursor: pointer;
+            font-weight: 400;
+        }
+
+        &:first-child a svg, &:last-child a svg{
+            width: 10px;
+            height: 10px;
+        }
+        
+        &:first-child a svg{
+            transform: rotateZ(180deg);
+        }
+    }
+}
+
+.disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+    pointer-events: none;
+    color: gray;
+}
+
+.active{
+    color: #fff;
+    background: linear-gradient(to right bottom, var(--secondary-color-ligth) 20%, var(--secondary-color-dark));
+}
